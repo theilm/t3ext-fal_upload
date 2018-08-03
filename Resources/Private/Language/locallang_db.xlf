@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2014-02-19T23:36:47Z"
+          product-name="fal_upload">
+        <header/>
+        <body>
+
+            <trans-unit id="tx_falupload_domain_model_upload">
+                <source>FAL Upload</source>
+            </trans-unit>
+            <trans-unit id="tx_falupload_domain_model_upload.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_falupload_domain_model_upload.image">
+                <source>Image</source>
+            </trans-unit>
+
+            <trans-unit id="tx_falupload_domain_model_upload.image_collection">
+                <source>Image Collection</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
