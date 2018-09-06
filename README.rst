@@ -23,7 +23,7 @@ File Upload using Extbase and FAL in TYPO3 > 6.2
       At Github `mindscreen/t3ext-fal_upload <https://github.com/mindscreen/t3ext-fal_upload>`__
 
 :Credit:
-      - `Helmut Hummel <helmut.hummel@typo3.org>`__ - for his extension `fal_upload <https://github.com/helhum/fal_upload>`__ as inspiration
+      - `Helmut Hummel <helmut.hummel@typo3.org>`__ - for his extension `upload_example <https://github.com/helhum/upload_example>`__ as inspiration
 
 
 **Overview:**
