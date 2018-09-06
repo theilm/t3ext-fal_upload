@@ -85,7 +85,7 @@ class UploadedFileReferenceConverter extends AbstractTypeConverter
      *
      * @var integer
      */
-    protected $priority = 2;
+    protected $priority = 30;
 
     /**
      * @var \TYPO3\CMS\Core\Resource\ResourceFactory
@@ -114,7 +114,7 @@ class UploadedFileReferenceConverter extends AbstractTypeConverter
      * Actually convert from $source to $targetType, taking into account the fully
      * built $convertedChildProperties and $configuration.
      *
-     * @param string|integer $source
+     * @param array $source
      * @param string $targetType
      * @param array $convertedChildProperties
      * @param \TYPO3\CMS\Extbase\Property\PropertyMappingConfigurationInterface $configuration
