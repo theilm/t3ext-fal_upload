@@ -33,11 +33,15 @@ namespace Mindscreen\FalUpload\Property\TypeConverter;
  */
 class ObjectStorageConverter extends \TYPO3\CMS\Extbase\Property\TypeConverter\ObjectStorageConverter
 {
+    /**
+     * @var string[]
+     */
+    protected $sourceTypes = ['array'];
 
     /**
      * Take precedence over the available ObjectStorageConverter
      *
-     * @var integer
+     * @var int
      */
     protected $priority = 20;
 
@@ -51,7 +55,7 @@ class ObjectStorageConverter extends \TYPO3\CMS\Extbase\Property\TypeConverter\O
      */
     public function getSourceChildPropertiesToBeConverted($source)
     {
-        $propertiesToConvert = array();
+        $propertiesToConvert = [];
 
         // TODO: Find a nicer way to throw away empty uploads
         foreach ($source as $propertyName => $propertyValue) {

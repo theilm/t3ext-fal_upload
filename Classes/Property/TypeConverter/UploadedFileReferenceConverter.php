@@ -26,6 +26,7 @@ namespace Mindscreen\FalUpload\Property\TypeConverter;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Core\Resource\DuplicationBehavior;
 use TYPO3\CMS\Core\Resource\File as FalFile;
 use TYPO3\CMS\Core\Resource\FileReference as FalFileReference;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -64,16 +65,9 @@ class UploadedFileReferenceConverter extends AbstractTypeConverter
     protected $defaultUploadFolder = '1:/user_upload/';
 
     /**
-     * Select from \TYPO3\CMS\Core\Resource\DuplicationBehavior options
-     *
-     * @var string
-     */
-    protected $defaultConflictMode = \TYPO3\CMS\Core\Resource\DuplicationBehavior::RENAME;
-
-    /**
      * @var array<string>
      */
-    protected $sourceTypes = array('array');
+    protected $sourceTypes = ['array'];
 
     /**
      * @var string
@@ -83,7 +77,7 @@ class UploadedFileReferenceConverter extends AbstractTypeConverter
     /**
      * Take precedence over the available FileReferenceConverter
      *
-     * @var integer
+     * @var int
      */
     protected $priority = 30;
 
@@ -108,7 +102,7 @@ class UploadedFileReferenceConverter extends AbstractTypeConverter
     /**
      * @var \TYPO3\CMS\Core\Resource\FileInterface[]
      */
-    protected $convertedResources = array();
+    protected $convertedResources = [];
 
     /**
      * Actually convert from $source to $targetType, taking into account the fully
@@ -128,7 +122,7 @@ class UploadedFileReferenceConverter extends AbstractTypeConverter
     public function convertFrom(
         $source,
         $targetType,
-        array $convertedChildProperties = array(),
+        array $convertedChildProperties = [],
         PropertyMappingConfigurationInterface $configuration = null
     ) {
         if (!isset($source['error']) || $source['error'] === \UPLOAD_ERR_NO_FILE) {
@@ -277,10 +271,16 @@ class UploadedFileReferenceConverter extends AbstractTypeConverter
             UploadedFileReferenceConverter::class,
             self::CONFIGURATION_UPLOAD_FOLDER
         ) ?: $this->defaultUploadFolder;
+        if (class_exists(DuplicationBehavior::class)) {
+            $defaultConflictMode = DuplicationBehavior::RENAME;
+        } else {
+            // @deprecated since 7.6 will be removed once 6.2 support is removed
+            $defaultConflictMode = 'changeName';
+        }
         $conflictMode = $configuration->getConfigurationValue(
             UploadedFileReferenceConverter::class,
             self::CONFIGURATION_UPLOAD_CONFLICT_MODE
-        ) ?: $this->defaultConflictMode;
+        ) ?: $defaultConflictMode;
 
         $uploadFolder = $this->resourceFactory->retrieveFileOrFolderObject($uploadFolderId);
         $uploadedFile = $uploadFolder->addUploadedFile($uploadInfo, $conflictMode);
