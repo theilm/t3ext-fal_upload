@@ -64,11 +64,11 @@ class UploadedFileReferenceConverter extends AbstractTypeConverter
     protected $defaultUploadFolder = '1:/user_upload/';
 
     /**
-     * One of 'cancel', 'replace', 'changeName'
+     * Select from \TYPO3\CMS\Core\Resource\DuplicationBehavior options
      *
      * @var string
      */
-    protected $defaultConflictMode = 'changeName';
+    protected $defaultConflictMode = \TYPO3\CMS\Core\Resource\DuplicationBehavior::RENAME;
 
     /**
      * @var array<string>
