@@ -24,7 +24,7 @@ return array(
             'endtime' => 'endtime',
         ),
         'searchFields' => 'title,',
-        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'ext_icon.svg'
+        'iconfile' => 'EXT:fal_upload/ext_icon.svg'
     ),
     'interface' => array(
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, image',
